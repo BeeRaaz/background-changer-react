@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+
+  let [counterValue, setCounterValue] = useState(0);
+
+  const addValue = () => {
+    //counterValue = counterValue + 1;
+    setCounterValue(counterValue + 1);
+    // console.log(counterValue);
+    if (counterValue === 20) {
+      console.log("this cannot go more than 20.");
+      setCounterValue(counterValue)
+    }
+  }
+
+  const subtractValue = () => {
+    //counterValue = counterValue - 1;
+    setCounterValue(counterValue - 1);
+    // console.log(counterValue);
+    if (counterValue === 0) {
+      console.log("this cannot go down below 0.");
+      setCounterValue(counterValue)
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={addValue}>Add</button>
+      <h1>Counter Value : {counterValue}</h1>
+      <button onClick={subtractValue}>Subtract</button>
     </div>
   );
 }
